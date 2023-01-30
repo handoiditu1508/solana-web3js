@@ -26,7 +26,7 @@ const sendSol = async (connection: Web3.Connection, amount: number, to: Web3.Pub
     {
       fromPubkey: sender.publicKey,
       toPubkey: to,
-      lamports: Web3.LAMPORTS_PER_SOL,
+      lamports: amount,
     }
   )
 

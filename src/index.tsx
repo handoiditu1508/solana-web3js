@@ -1,28 +1,21 @@
 import { PhantomWalletAdapter } from "@solana/wallet-adapter-phantom";
-import { ConnectionProvider, WalletProvider } from "@solana/wallet-adapter-react";
-import { WalletModalProvider, WalletMultiButton } from "@solana/wallet-adapter-react-ui";
 import * as web3 from '@solana/web3.js';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
+import WalletContextProvider from "./WalletContextProvider";
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
-const endpoint = web3.clusterApiUrl("devnet");
-const wallet = new PhantomWalletAdapter();
 
 root.render(
   <React.StrictMode>
-    <ConnectionProvider endpoint={endpoint}>
-      <WalletProvider wallets={[wallet]}>
-        <WalletModalProvider>
-          <App />
-        </WalletModalProvider>
-      </WalletProvider>
-    </ConnectionProvider>
+    <WalletContextProvider>
+      <App />
+    </WalletContextProvider>
   </React.StrictMode>
 );
 

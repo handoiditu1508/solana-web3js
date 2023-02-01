@@ -5,10 +5,17 @@ export default class Movie {
   rating: number;
   description: string;
 
-  borshInstructionSchema = borsh.struct([
+  static borshInstructionSchema = borsh.struct([
     borsh.u8('variant'),
     borsh.str('title'),
     borsh.u8('rating'),
+    borsh.str('description'),
+  ]);
+
+  static borshAccountSchema = borsh.struct([
+    borsh.bool('initialized'),// 1 byte
+    borsh.u8('rating'),// 1 byte (8 bits)
+    borsh.str('title'),
     borsh.str('description'),
   ]);
 
@@ -27,7 +34,21 @@ export default class Movie {
 
   serialize(): Buffer {
     const buffer = Buffer.alloc(1000);
-    this.borshInstructionSchema.encode({ ...this, variant: 0 }, buffer);
-    return buffer.slice(0, this.borshInstructionSchema.getSpan(buffer));
+    Movie.borshInstructionSchema.encode({ ...this, variant: 0 }, buffer);
+    return buffer.slice(0, Movie.borshInstructionSchema.getSpan(buffer));
+  }
+
+  static deserialize(buffer?: Buffer): Movie | null {
+    if (!buffer) {
+      return null
+    }
+
+    try {
+      const { title, rating, description } = this.borshAccountSchema.decode(buffer);
+      return new Movie(title, rating, description);
+    } catch (error) {
+      console.log('Deserialization error:', error);
+      return null
+    }
   }
 }

@@ -8,6 +8,7 @@ import ConnectWallet from "./pages/ConnectWallet";
 import TransferWallet from "./pages/TransferWallet";
 import PingWallet from "./pages/PingWallet";
 import MovieReview from "./pages/MovieReview";
+import TokenMint from "./pages/TokenMint";
 
 function App() {
   return (
@@ -17,7 +18,8 @@ function App() {
     // <ConnectWallet />
     // <TransferWallet />
     // <PingWallet />
-    <MovieReview />
+    // <MovieReview />
+    <TokenMint />
   );
 }
 

@@ -76,45 +76,44 @@ export const Form: FC = () => {
       justifyContent: "center"
     }}>
       <form onSubmit={handleSubmit}>
-        <FormControl required>
-          <FormLabel sx={{ color: (theme: Theme) => theme.palette.grey[200] }}>
-            Movie Title
-          </FormLabel>
-          <TextField
-            id='title'
-            inputProps={{ sx: { color: (theme: Theme) => theme.palette.grey[400] } }}
-            onChange={event => setTitle(event.currentTarget.value)}
-          />
-        </FormControl>
-        <FormControl required>
-          <FormLabel sx={{ color: (theme: Theme) => theme.palette.grey[200] }}>
-            Add your review
-          </FormLabel>
-          <TextField
-            id='review'
-            multiline
-            inputProps={{ sx: { color: (theme: Theme) => theme.palette.grey[400] } }}
-            onChange={event => setMessage(event.currentTarget.value)}
-          />
-        </FormControl>
-        <FormControl required>
-          <FormLabel sx={{ color: (theme: Theme) => theme.palette.grey[200] }}>
-            Rating
-          </FormLabel>
-          <TextField
-            type="number"
-            inputProps={{
-              max: 5,
-              min: 1,
-              id: "amount",
-              sx: { color: (theme: Theme) => theme.palette.grey[400] }
-            }}
-            onChange={(e) => setRating(parseInt(e.target.value))} />
-        </FormControl>
-        <Button variant="contained" sx={{
-          width: "100%",
-          mt: 4
-        }}
+        <TextField
+          id='title'
+          label="Movie Title"
+          required
+          sx={{ ".MuiFormLabel-root": { color: (theme: Theme) => theme.palette.grey[200] } }}
+          inputProps={{ sx: { color: (theme: Theme) => theme.palette.grey[400] } }}
+          value={title}
+          onChange={event => setTitle(event.currentTarget.value)}
+        />
+        <TextField
+          id='review'
+          label="Add your review"
+          required
+          sx={{ ".MuiFormLabel-root": { color: (theme: Theme) => theme.palette.grey[200] } }}
+          multiline
+          inputProps={{ sx: { color: (theme: Theme) => theme.palette.grey[400] } }}
+          value={message}
+          onChange={event => setMessage(event.currentTarget.value)}
+        />
+        <TextField
+          label="Rating"
+          required
+          sx={{ ".MuiFormLabel-root": { color: (theme: Theme) => theme.palette.grey[200] } }}
+          type="number"
+          inputProps={{
+            max: 5,
+            min: 1,
+            id: "amount",
+            sx: { color: (theme: Theme) => theme.palette.grey[400] }
+          }}
+          value={rating}
+          onChange={(e) => setRating(parseInt(e.target.value))} />
+        <Button
+          variant="contained"
+          sx={{
+            width: "100%",
+            mt: 4
+          }}
           type="submit">
           Submit Review
         </Button>

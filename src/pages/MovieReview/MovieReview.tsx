@@ -1,7 +1,7 @@
 import { AppBar as MuiAppBar, Box, Container, Typography } from "@mui/material"
 import { AppBar } from "./AppBar"
 import { Form } from "./Form"
-import styles from './Home.module.css'
+import styles from '../../styles/Home.module.css'
 import { MovieList } from "./MovieList"
 
 function MovieReview() {

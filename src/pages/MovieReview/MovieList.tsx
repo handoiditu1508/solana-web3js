@@ -39,6 +39,7 @@ export const MovieList: FC = () => {
     <div>
       <TextField
         id="search"
+        value={search}
         onChange={event => setSearch(event.currentTarget.value)}
         placeholder='Search'
         inputProps={{ sx: { color: (theme: Theme) => theme.palette.grey[400] } }} />

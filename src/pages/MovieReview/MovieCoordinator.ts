@@ -35,7 +35,6 @@ export default class MovieCoordinator {
   }
 
   static async fetchPage(connection: web3.Connection, page: number, perPage: number, search: string, reload: boolean = false): Promise<Movie[]> {
-    console.log(reload);
     if (this.accounts.length === 0 || reload) {
       await this.prefetchAccounts(connection, search);
     }

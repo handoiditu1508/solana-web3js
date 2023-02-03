@@ -9,6 +9,7 @@ import TransferWallet from "./pages/TransferWallet";
 import PingWallet from "./pages/PingWallet";
 import MovieReview from "./pages/MovieReview";
 import TokenMint from "./pages/TokenMint";
+import LiquidityPool from "./pages/LiquidityPool";
 
 function App() {
   return (
@@ -19,7 +20,8 @@ function App() {
     // <TransferWallet />
     // <PingWallet />
     // <MovieReview />
-    <TokenMint />
+    // <TokenMint />
+    <LiquidityPool />
   );
 }
 
